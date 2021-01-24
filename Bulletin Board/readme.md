@@ -1,9 +1,7 @@
-1. Overview
-CSCi 5105: Introduction to Distributed System Spring 2020
-Instructor: Jon Weissman
-Project 2: Bulletin Board Consistency Due: Mar 30 12pm (noon)
-In this project, you will implement a simple Bulletin Board (BB) system (like our Canvas discussion forum) in which clients can post, reply, and read articles stored in the BB. The BB is maintained by a group of replicated servers that offer sequential consistency, quorum consistency, and read-your-Write consistency. You may reuse any of the code developed in Project 1 or you can start from scratch. However, unlike the PubSub system, your server(s) will store and remember all articles. You can use any communication protocol/system (e.g. UDP, TCP, RPC, or anything else) as you want. In this lab, you will learn about how to implement various forms of consistency and their tradeoffs. The desired consistency mechanism is supplied as a parameter at runtime.
-2. Project Details
+## Overview
+This project is a simple Bulletin Board (BB) system (like our Canvas discussion forum) in which clients can post, reply, and read articles stored in the BB. The BB is maintained by a group of replicated servers that offer sequential consistency, quorum consistency, and read-your-Write consistency. You may reuse any of the code developed in Project 1 or you can start from scratch. However, unlike the PubSub system, your server(s) will store and remember all articles. You can use any communication protocol/system (e.g. UDP, TCP, RPC, or anything else) as you want. In this lab, you will learn about how to implement various forms of consistency and their tradeoffs. The desired consistency mechanism is supplied as a parameter at runtime.
+
+## Project Details
 The project will be comprised of clients and servers (one of the servers is designated as the primary or coordinator). The client does not know or care who the coordinator is. All of the other servers are configured to know who the coordinator is. Clients can connect to any server(s). Thus, the client knows the address of every server (you may deploy servers on the same machine with different ports if you like or on different CSE labs machines). To keep things simple, there is only one BB with a single topic stream. The operations that the clients should be able to perform are below:
 1. Post an article
 2. Readalistofarticlesanddisplaythelistoneitemperline(maybejustthefirstfewwordsorthetitleof
@@ -34,50 +32,9 @@ d) Allow the coordinator to fail and hold a leader election to determine a new c
 e) Pick another consistency policy to implement.
 To realize your project goals, you have to define an API for server-server communication to propagate updates, request new article IDs, and so on. This is up to you to define.
    
-  Randomly chosen quorum (NR)
-Post
-Read a list of articles Choose one of article Reply
-Randomly chosen Read quorum (NW)
-N replicas
-        Server
-Server
-Server
-Server
-Server
-Coordinator (Server)
-Server
-Server
-          Client
- Client
-Client
-Client
-3. Implementation Details
+## Implementation Details
 You may borrow code that you like from Project 1. Do not use any code found on-line. To make multiple servers run easily, your servers may run in a single machine with different port numbers. Note that your servers are also expected to work when deployed across different machines. In the quorum protocol, replicas can get out of synch. That is, a reader is always guaranteed to get the most recent article (i.e. the latest ID) from one of the replicas, but there is no guarantee that the history of updates will be preserved at all replicas. To fix this problem, implement a synch operation that brings all replicas up to date with each other and can be called periodically in the background from within the servers.
-4. Project Group
-All students should work in groups of size 2-3. There are some students who have done the Project 1 without a partner. So if you were doing the project alone but want to find a partner, we encourage you to use the forum to find your partner.
-5. Test Cases
-You should also develop your own test cases for all the components of the architecture, and provide documentation that explains how to run each of your test cases, including the expected results. Also tell us about any possible deadlocks or race conditions.
-There are many failure modes relating to the content of messages, parameters, and system calls. Try to catch as many of these as possible. Finally, you should run your clients and servers within the CSE firewall – as outside access particularly through UDP may be blocked.
-6. Deliverables
-a. Design document briefly describing each component. Performance graphs and simple analysis. Not to
-Client
-Client
-   
-exceed 5 pages.
-b. Instructions explaining how to run each component and how to use the service as a whole, including
-command line syntax, configuration file particulars, and user input interface.
-c. Testing description, including a list of cases attempted (which could also include negative cases) and the
-results.
-d. Source code, makefiles and/or a script to start the system, and executables.
-e. Pledge: your team will sign a pledge that no one sought out any on-line solutions, e.g. github, for
-portions of this lab. Violations will lead to course failure.
-Note: a, b, and c should be in a single document file.
-7. Grading
-The grade for this assignment will include the following components:
-a. 20% - The document you submit – This includes a detailed description of the system design and
-operation along with the test cases used for the system (must include negative cases)
-b. 70% - The functionality and correctness of your own server and clients
-c. 10% - The quality of the source code, in terms of style and in line documentation
-8. Resources
+
+## Resources
 a. D. K. GIFFORD, Weighted voting for replicated data, in Proc. 7th Annual ACM Symp. Oper. Sys. Principles (SIGOPS), ACM, New York, 1979.
 b. S. B. DAVIDSON, H. GARCIA-MOLINA, AND D. SKEEN, Consistency in partitioned networks, ACM Computing Surveys, 17 (1985).
