@@ -1,4 +1,4 @@
-# Pub-Sub System Using Java RMI
+# Pub-Sub System 
 
 ## Overview
 In this project, you will implement a simple publish subscribe system (PubSub). You will use two forms of communication: basic messaging using UDP and an RPC system of your choice, either Java RMI or Linux RPC. For this reason, you may code the project in the language of your choice, though we recommend the latter. As a third option, you are welcome to try out Apache thrift using a language of your choice (e.g. Java). We have included links to it on the additional reading list, but you are on your own with thrift.
