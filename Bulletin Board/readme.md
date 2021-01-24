@@ -21,15 +21,15 @@ Since the number of articles in the BB can be large, you should consider how man
 
 The article IDs are returned with the article and can be used both in formatting and in calls to choose or reply. You can decide on the structure and format of an article. There are multiple clients in this system and each client will perform operations concurrently. Your clients will have a simple UI to manipulate the operations on the BB (the look of the interface is up to you). You will need to decide how to represent “reply” articles so that the client may format things properly. To emulate the propagation delay one might see in a wide-area network, you can delay the sending a message (from client to server or server to server) by sleeping a random amount of seconds.
 
-- a) Implement sequential consistency
+### a) Implement sequential consistency
 This means that all clients should see the same order of articles on a read from any server even if they were posted by concurrent clients to any servers. You can use the primary-backup protocol.
-- b) Implement quorum consistency
+### b) Implement quorum consistency
 Given N replicas, you will to assemble a read quorum (NR) which is an arbitrary collection of servers in order to read/choose, and a write quorum (NW), an arbitrary collection of servers in order to post/reply for the client. The values of NR and NW are subject to the following two constraints:
   - 1. NR + NW > N
   - 2. NW > N/2
 
   You may use the coordinator as a control point for your quorum. That is, the client contacts any server, which in turn, contacts the coordinator to do the operation contacting the other randomly chosen servers needed for the quorum. Now, vary the values of NR and NW and measure the cost (as seen from the client) to do a write or read operation. Present data graphs and provide simple analysis.
-- c) Implement Read-your-Write consistency
+### c) Implement Read-your-Write consistency
 For this, suppose a client C posts an article or reply to a specific server S1. Later, if the client C connects to a different server S2 and does a read or choose, they are guaranteed to see the prior updates.
 You can use the local-write protocol. Measure the cost of client operations and compare.
 For all consistency policies, measure the cost of client operations, and compare across the policies.
