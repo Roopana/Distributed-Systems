@@ -8,6 +8,8 @@ The project will be comprised of multiple __nodes__ and a single __tracking serv
 3. __GetLoad__ returns the load at a given peer requested from another peer
 4. __UpdateList__ provides the list of files stored at a given peer to the server
 
+![picture alt](sys_architecture.png)
+
 For simplicity, the latency between all possible peer nodes is stored in a configuration file known to all of the peers. This configuration file should be read at boot-time by the peers. You can choose the latency values in this file in the range [100-5000] ms. In addition, each peer maintains a load index, which is the number of concurrent downloads or uploads this peer is currently performing. Thus, the peers are __multithreaded__.
 ### a) Find (filename)
 This is called on the server and returns the set of peers that store the file and the file checksum. The file name will be unique globally, e.g. there is only one “foo.txt” allowed. A peer can get a node list from the tracking server only when they provide exact same input with a file name, e.g. Find (“foo”) can get the list of nodes which have “foo.txt”.
@@ -34,7 +36,6 @@ You should decide whether a peer will be failed or retry an operation later when
 In this project, there is some optional functionality. Although there is no extra credit for the optional features, you may get back some credit for implementing optional functions if you lost points in other parts of this project.
 
 ## Implementation Details
-![picture alt](sys_architecture.png)
 
 To make multiple nodes run easily, your nodes may run in a single machine with different port number. Note that your nodes are also expected to work well when deployed across different machines.
 
