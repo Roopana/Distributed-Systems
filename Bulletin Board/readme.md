@@ -33,7 +33,7 @@ Given N replicas, you will to assemble a read quorum (NR) which is an arbitrary 
 For this, suppose a client C posts an article or reply to a specific server S1. Later, if the client C connects to a different server S2 and does a read or choose, they are guaranteed to see the prior updates.
 You can use the local-write protocol. Measure the cost of client operations and compare.
 
-##### For all consistency policies, measure the cost of client operations, and compare across the policies.
+#### For all consistency policies, measure the cost of client operations, and compare across the policies.
 
 Done Early? Try this :
 ### d) Fault tolerance
