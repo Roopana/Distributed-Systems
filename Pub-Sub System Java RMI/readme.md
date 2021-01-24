@@ -1,9 +1,7 @@
 # Pub-Sub System using Java RMI
 
 ## Overview
-In this project, you will implement a simple publish subscribe system (PubSub). You will use two forms of communication: basic messaging using UDP and an RPC system of your choice, either Java RMI or Linux RPC. For this reason, you may code the project in the language of your choice, though we recommend the latter. As a third option, you are welcome to try out Apache thrift using a language of your choice (e.g. Java). We have included links to it on the additional reading list, but you are on your own with thrift.
-
-Your PubSub system will allow the publishing of simple formatted “articles”. In this lab, you will learn about distributed computing and communication protocols. You may assume that UDP communication is reliable. This lab also contains a number of optional features that bring no extra credit but may challenge you. This lab has a number of details to work through so get started ASAP. It is assumed that you are familiar with basic IP communication (e.g. IP addresses and port).
+A simple publish subscribe system (PubSub) using two forms of communication: basic messaging using __UDP__ and an __RPC__(Remote Procedure Call) system using Java RMI. The PubSub system will allow the publishing of simple formatted “articles”. This project teaches about distributed computing and communication protocols. It is assumed that UDP communication is reliable.
 
 ## Project Details
 The project will be comprised of: __clients, group servers,__ and a __registry-server__. You will program a client and group server. The registry server code will be provided. The registry server is assumed to be a known IP address and port (you need to establish them on your own). It will communicate via low-level UDP and be neutral to your group server language and RPC/RMI implementation. The registry stores information about your group server(s). To obtain the existing group server list, you may call __GetList__, via UDP. Note that, you are not supposed to modify the registry server, if you need to do that, describe your modification in the delivery document.
