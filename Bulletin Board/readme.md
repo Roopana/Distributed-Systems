@@ -32,9 +32,10 @@ Given N replicas, you will to assemble a read quorum (NR) which is an arbitrary 
 ### c) Implement Read-your-Write consistency
 For this, suppose a client C posts an article or reply to a specific server S1. Later, if the client C connects to a different server S2 and does a read or choose, they are guaranteed to see the prior updates.
 You can use the local-write protocol. Measure the cost of client operations and compare.
-For all consistency policies, measure the cost of client operations, and compare across the policies.
 
-Done Early? Try this for no extra credit:
+##### For all consistency policies, measure the cost of client operations, and compare across the policies.
+
+Done Early? Try this :
 ### d) Fault tolerance
 Allow the coordinator to fail and hold a leader election to determine a new coordinator.
 ### e) Consistency protocol
@@ -43,7 +44,7 @@ Pick another consistency policy to implement.
 To realize your project goals, you have to define an API for server-server communication to propagate updates, request new article IDs, and so on. This is up to you to define.
    
 ## Implementation Details
-You may borrow code that you like from Project 1. Do not use any code found on-line. To make multiple servers run easily, your servers may run in a single machine with different port numbers. Note that your servers are also expected to work when deployed across different machines. In the quorum protocol, replicas can get out of synch. That is, a reader is always guaranteed to get the most recent article (i.e. the latest ID) from one of the replicas, but there is no guarantee that the history of updates will be preserved at all replicas. To fix this problem, implement a synch operation that brings all replicas up to date with each other and can be called periodically in the background from within the servers.
+To make multiple servers run easily, your servers may run in a single machine with different port numbers. Note that your servers are also expected to work when deployed across different machines. In the quorum protocol, replicas can get out of synch. That is, a reader is always guaranteed to get the most recent article (i.e. the latest ID) from one of the replicas, but there is no guarantee that the history of updates will be preserved at all replicas. To fix this problem, implement a synch operation that brings all replicas up to date with each other and can be called periodically in the background from within the servers.
 
 ## Resources
 - D. K. GIFFORD, Weighted voting for replicated data, in Proc. 7th Annual ACM Symp. Oper. Sys. Principles (SIGOPS), ACM, New York, 1979.
