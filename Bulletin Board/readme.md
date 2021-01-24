@@ -34,8 +34,11 @@ For this, suppose a client C posts an article or reply to a specific server S1. 
 You can use the local-write protocol. Measure the cost of client operations and compare.
 For all consistency policies, measure the cost of client operations, and compare across the policies.
 Done Early? Try this for no extra credit:
-- d) Allow the coordinator to fail and hold a leader election to determine a new coordinator.
-- e) Pick another consistency policy to implement.
+### d) Fault tolerance
+Allow the coordinator to fail and hold a leader election to determine a new coordinator.
+### e) Consistency protocol
+Pick another consistency policy to implement.
+
 To realize your project goals, you have to define an API for server-server communication to propagate updates, request new article IDs, and so on. This is up to you to define.
    
 ## Implementation Details
