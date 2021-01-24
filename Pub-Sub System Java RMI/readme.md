@@ -48,13 +48,13 @@ The operations which the server should be able to perform with the register serv
 - b. __Deregister__ (string): no return
 - c. __GetList__ (string): returns list of active servers + contact information as a string
 
-##### UDP message format
+__UDP message format__
 Depending on the RPC format (RPC/RMI), the group server should use different arguments for the UDP message. You will use a single string in both cases:
 
 - __For RPC:__ [“Register;RPC;IP;Port;ProgramID;Version”] [“Deregister;RPC;IP;Port”] [“GetList;RPC;IP;Port”]
 - __For java RMI:__ [“Register;RMI;IP;Port;BindingName;Port for RMI”] [“Deregister;RMI;IP;Port”] [“GetList;RMI;IP;Port”]
 
-##### GetList output format
+__GetList output format__
 For GetList, the registry will return the list of other servers in both cases as a UDP message. This format will also be a string:
 
 - __For RPC:__ [“IP;ProgramID;Version;IP;ProgramID;Version;IP;ProgramID;Version... and so on”]
