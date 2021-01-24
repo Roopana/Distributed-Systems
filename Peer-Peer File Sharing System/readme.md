@@ -35,12 +35,6 @@ In this project, there is some optional functionality. Although there is no extr
 
 ## Implementation Details
 To make multiple nodes run easily, your nodes may run in a single machine with different port number. Note that your nodes are also expected to work well when deployed across different machines.
-Static Latency table
- Tracking Server S1
-  Nodes List
-  Client : C1 Load : 30
-Client : C2 Load : 10
- GetLoad Download
 
 ## Resource
 [1] Serverless Network File System: http://www.cs.iastate.edu/~cs652/notes/xfs.pdf
