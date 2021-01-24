@@ -34,6 +34,7 @@ You should decide whether a peer will be failed or retry an operation later when
 In this project, there is some optional functionality. Although there is no extra credit for the optional features, you may get back some credit for implementing optional functions if you lost points in other parts of this project.
 
 ## Implementation Details
+![picture alt]sys_architecture.png
 To make multiple nodes run easily, your nodes may run in a single machine with different port number. Note that your nodes are also expected to work well when deployed across different machines.
 
 ## Resource
