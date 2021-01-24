@@ -21,7 +21,7 @@ Since the number of articles in the BB can be large, you should consider how man
 
 The article IDs are returned with the article and can be used both in formatting and in calls to choose or reply. You can decide on the structure and format of an article. There are multiple clients in this system and each client will perform operations concurrently. Your clients will have a simple UI to manipulate the operations on the BB (the look of the interface is up to you). You will need to decide how to represent “reply” articles so that the client may format things properly. To emulate the propagation delay one might see in a wide-area network, you can delay the sending a message (from client to server or server to server) by sleeping a random amount of seconds.
 
-![](bb_architecture.png)
+    ![](bb_architecture.png)
 
 ### a) Implement sequential consistency
 This means that all clients should see the same order of articles on a read from any server even if they were posted by concurrent clients to any servers. You can use the primary-backup protocol.
