@@ -8,6 +8,8 @@ Your PubSub system will allow the publishing of simple formatted “articles”.
 ## Project Details
 The project will be comprised of: __clients, group servers,__ and a __registry-server__. You will program a client and group server. The registry server code will be provided. The registry server is assumed to be a known IP address and port (you need to establish them on your own). It will communicate via low-level UDP and be neutral to your group server language and RPC/RMI implementation. The registry stores information about your group server(s). To obtain the existing group server list, you may call __GetList__, via UDP. Note that, you are not supposed to modify the registry server, if you need to do that, describe your modification in the delivery document.
 
+![](pubsub_architecture.png)
+
 ### Client
 Your client will first contact your Registry Server to get a list of existing group servers. The client calls __Join__ on one of the group servers and then may call __Subscribe__ and __Publish__ on the server. Clients communicate to their server by means of RPC/RMI. The group server determines the matching set of clients for a published article, and then propagates the article to each client via UDP. Thus, you may want to multithread your client: one thread for RPCs and the other for receiving subscribed articles. The client must first Join to their local server when it starts up. The server will allow at most MAXCLIENT clients at any one time. A client may __Leave__ a server at any time, but it is assumed they notify the server first. You can decide whether to cache articles at the server or not. If you do, you need to describe how you would garbage- collect them.
 
