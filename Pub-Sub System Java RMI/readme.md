@@ -51,13 +51,11 @@ The operations which the server should be able to perform with the register serv
 Depending on the RPC format (RPC/RMI), the group server should use different arguments for the UDP message. You will use a single string in both cases:
 
 - __UDP message format For RPC:__ [“Register;RPC;IP;Port;ProgramID;Version”] [“Deregister;RPC;IP;Port”] [“GetList;RPC;IP;Port”]
-
 - __UDP message format For java RMI:__ [“Register;RMI;IP;Port;BindingName;Port for RMI”] [“Deregister;RMI;IP;Port”] [“GetList;RMI;IP;Port”]
 
   For GetList, the registry will return the list of other servers in both cases as a UDP message. This format will also be a string:
 
 - __Output format of GetList For RPC:__ [“IP;ProgramID;Version;IP;ProgramID;Version;IP;ProgramID;Version... and so on”]
-
 - __Output format of GetList For java RMI:__ [“IP;BindingName;Port;IP;BindingName;Port;IP;BindingName;Port ... and so on”] You can assume that the length of the returned server list will not exceed 1024 bytes.
 
 ### Registry Server → Server (by UDP)
