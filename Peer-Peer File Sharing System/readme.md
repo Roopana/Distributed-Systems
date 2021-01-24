@@ -35,6 +35,7 @@ In this project, there is some optional functionality. Although there is no extr
 
 ## Implementation Details
 ![picture alt](sys_architecture.png)
+
 To make multiple nodes run easily, your nodes may run in a single machine with different port number. Note that your nodes are also expected to work well when deployed across different machines.
 
 ## Resource
