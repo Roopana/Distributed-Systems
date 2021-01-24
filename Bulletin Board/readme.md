@@ -1,4 +1,3 @@
-
 # Bulletin Board
 ## Overview
 A simple Bulletin Board (BB) system (like UMN Canvas discussion forum) in which clients can __post, reply,__ and __read__ articles stored in the BB. The BB is maintained by a group of replicated servers that offer __sequential consistency, quorum consistency,__ and __read-your-Write consistency__. Unlike the PubSub system, the server(s) will store and remember all articles. __UDP and TCP__ protocols are used to establish communication between coordinator, replicated servers and clients. The project focusses on how to implement various forms of consistency and their tradeoffs. The desired consistency mechanism is supplied as a parameter at runtime.
