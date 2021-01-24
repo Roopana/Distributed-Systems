@@ -4,7 +4,7 @@ A distributed system in its most simplest definition is a group of computers wor
 
 These machines have a shared state, operate concurrently and can fail independently without affecting the whole system’s uptime. [Ref](https://www.freecodecamp.org/news/a-thorough-introduction-to-distributed-systems-3b91562c9b3c/)
 
-In this repository I have shared three examples of distributed systems.
+This repository hosts implementation of three distributed systems applications.
 
 ## 1. Pub Sub System
 A simple publish subscribe system (PubSub) using two forms of communication: basic messaging using __UDP__ and an __RPC__(Remote Procedure Call) system using Java RMI. The PubSub system will allow the publishing of simple formatted “articles”. This project teaches about distributed computing and communication protocols. It is assumed that UDP communication is reliable.
