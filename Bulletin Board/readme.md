@@ -32,5 +32,5 @@ To realize your project goals, you have to define an API for server-server commu
 You may borrow code that you like from Project 1. Do not use any code found on-line. To make multiple servers run easily, your servers may run in a single machine with different port numbers. Note that your servers are also expected to work when deployed across different machines. In the quorum protocol, replicas can get out of synch. That is, a reader is always guaranteed to get the most recent article (i.e. the latest ID) from one of the replicas, but there is no guarantee that the history of updates will be preserved at all replicas. To fix this problem, implement a synch operation that brings all replicas up to date with each other and can be called periodically in the background from within the servers.
 
 ## Resources
-- a. D. K. GIFFORD, Weighted voting for replicated data, in Proc. 7th Annual ACM Symp. Oper. Sys. Principles (SIGOPS), ACM, New York, 1979.
-- b. S. B. DAVIDSON, H. GARCIA-MOLINA, AND D. SKEEN, Consistency in partitioned networks, ACM Computing Surveys, 17 (1985).
+- D. K. GIFFORD, Weighted voting for replicated data, in Proc. 7th Annual ACM Symp. Oper. Sys. Principles (SIGOPS), ACM, New York, 1979.
+- S. B. DAVIDSON, H. GARCIA-MOLINA, AND D. SKEEN, Consistency in partitioned networks, ACM Computing Surveys, 17 (1985).
