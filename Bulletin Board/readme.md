@@ -37,7 +37,7 @@ You can use the local-write protocol. Measure the cost of client operations and 
 
 #### For all consistency policies, measure the cost of client operations, and compare across the policies.
 
-Done Early? Try this :
+Additional features to try:
 ### d) Fault tolerance
 Allow the coordinator to fail and hold a leader election to determine a new coordinator.
 ### e) Consistency protocol
