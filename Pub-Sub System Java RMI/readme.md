@@ -44,28 +44,21 @@ The server will propagate the article to each matched client using UDP unicast. 
 ### Server → RegistryServer (by UDP)
 The operations which the server should be able to perform with the register server are below.
 
-- a. Register (string): no return
-- b. Deregister (string): no return
-- c. GetList (string): returns list of active servers + contact information as a string
+- a. __Register__ (string): no return
+- b. __Deregister__ (string): no return
+- c. __GetList__ (string): returns list of active servers + contact information as a string
 
 Depending on the RPC format (RPC/RMI), the group server should use different arguments for the UDP message. You will use a single string in both cases:
 
-__UDP message format For RPC:__
+__UDP message format For RPC:__ [“Register;RPC;IP;Port;ProgramID;Version”] [“Deregister;RPC;IP;Port”] [“GetList;RPC;IP;Port”]
 
-[“Register;RPC;IP;Port;ProgramID;Version”] [“Deregister;RPC;IP;Port”] [“GetList;RPC;IP;Port”]
-
-__UDP message format For java RMI:__
-
-[“Register;RMI;IP;Port;BindingName;Port for RMI”] [“Deregister;RMI;IP;Port”]
-[“GetList;RMI;IP;Port”]
+__UDP message format For java RMI:__ [“Register;RMI;IP;Port;BindingName;Port for RMI”] [“Deregister;RMI;IP;Port”] [“GetList;RMI;IP;Port”]
 
 For GetList, the registry will return the list of other servers in both cases as a UDP message. This format will also be a string:
 
-__Output format of GetList For RPC:__
-[“IP;ProgramID;Version;IP;ProgramID;Version;IP;ProgramID;Version... and so on”]
+__Output format of GetList For RPC:__ [“IP;ProgramID;Version;IP;ProgramID;Version;IP;ProgramID;Version... and so on”]
 
-__Output format of GetList For java RMI:__
-[“IP;BindingName;Port;IP;BindingName;Port;IP;BindingName;Port ... and so on”] You can assume that the length of the returned server list will not exceed 1024 bytes.
+__Output format of GetList For java RMI:__ [“IP;BindingName;Port;IP;BindingName;Port;IP;BindingName;Port ... and so on”] You can assume that the length of the returned server list will not exceed 1024 bytes.
 
 ### Registry Server → Server (by UDP)
 The registry server will periodically send a string “heartbeat” to joined servers via UDP. Your group server needs to return the same string is received from the registry server. If your server does not respond to this request within 5 seconds, your server will be removed from the registry server. Thus, your group server should have a UDP thread that awaits such requests from the registry server.
