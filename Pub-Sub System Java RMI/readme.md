@@ -19,22 +19,23 @@ To check whether the group server is up, the client will __Ping__ the group serv
 ## Implementation Details
 ### The Article String Format (by RPC/RMI)
 An article is a simple formatted string with 4 fields separated by “;”: type, originator, org, and contents. The type can be one of the following categories: <Sports, Lifestyle, Entertainment, Business, Technology, Science, Politics, Health>. You may assume an article is a fixed length string of length MAXSTRING (120 bytes), any padding can be done at the end of the contents. The contents field is mandatory (for Publish) and at least 1 of the first 3 fields must be present (for Subscribe) and no contents field is allowed for Subscribe. Note that only the type is standardized, the rest could be arbitrary strings.
-- “Sports;;;contents” → (OK for Publish only) 
-- “;Someone;UMN;contents” → (OK for Publish only) 
-- “Science;Someone;UMN;contents” → (OK for Publish only) 
-- “Science;;UMN;” → (OK for Subscribe – Science AND UMN only) 
-- “;;;contents” → No first three fields. (Impossible)
+
+- _“Sports;;;contents”_ → (OK for Publish only) 
+- _“;Someone;UMN;contents”_ → (OK for Publish only) 
+- _“Science;Someone;UMN;contents”_ → (OK for Publish only) 
+- _“Science;;UMN;”_ → (OK for Subscribe – Science AND UMN only) 
+- _“;;;contents”_ → No first three fields. (Impossible)
 
 Think about how your server will efficiently match published articles to subscriptions.
 
 ### Client → Group Server API (by RPC/RMI)
 The operations which a client should be able to perform with the group server are below.
-a. __Join__ (IP, Port):Register to a group server (provide client IP, Port for subsequent UDP communications)
-b. __Leave__(IP, Port): Leave from a group server
-c. __Subscribe__ (IP, Port, Article): Request a subscription to group server
-d. __Unsubscribe__ (IP, Port, Article): Request an unsubscribe to group server
-e. __Publish__ (IP, Port, Article): Sends a new article to the server
-f. __Ping()__: Check whether the server is up
+- a. __Join__ (IP, Port):Register to a group server (provide client IP, Port for subsequent UDP communications)
+- b. __Leave__(IP, Port): Leave from a group server
+- c. __Subscribe__ (IP, Port, Article): Request a subscription to group server
+- d. __Unsubscribe__ (IP, Port, Article): Request an unsubscribe to group server
+- e. __Publish__ (IP, Port, Article): Sends a new article to the server
+- f. __Ping()__: Check whether the server is up
 The client should know the location of its group server (IP, port, any RPC/RMI names/interfaces) when it starts up (and is registered to the registry server). The client can then choose to Subscribe and Publish. Note: that Publish, {Un}Subscribe should fail if the Article is not in a legal format.
 
 ### Server → Client (By UDP)
@@ -50,9 +51,11 @@ The operations which the server should be able to perform with the register serv
 Depending on the RPC format (RPC/RMI), the group server should use different arguments for the UDP message. You will use a single string in both cases:
 
 __UDP message format For RPC:__
+
 [“Register;RPC;IP;Port;ProgramID;Version”] [“Deregister;RPC;IP;Port”] [“GetList;RPC;IP;Port”]
 
 __UDP message format For java RMI:__
+
 [“Register;RMI;IP;Port;BindingName;Port for RMI”] [“Deregister;RMI;IP;Port”]
 [“GetList;RMI;IP;Port”]
 
